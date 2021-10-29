@@ -2,16 +2,13 @@ import { getRepository, Repository } from 'typeorm';
 
 import { IFindUserWithGamesDTO, IFindUserByFullNameDTO } from '../../dtos';
 import { User } from '../../entities/User';
-import { Game } from '../../../games/entities/Game';
 import { IUsersRepository } from '../IUsersRepository';
 
 export class UsersRepository implements IUsersRepository {
   private repository: Repository<User>;
-  private repositoryGame: Repository<Game>;
 
   constructor() {
     this.repository = getRepository(User);
-    this.repositoryGame = getRepository(Game);
   }
 
   async findUserWithGamesById({
